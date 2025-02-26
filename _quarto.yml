@@ -19,6 +19,7 @@ website:
 format: 
   html:
     theme: sandstone
+    css: styles.css
 
 execute: 
   echo: true
