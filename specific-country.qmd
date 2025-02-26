@@ -1,0 +1,28 @@
+---
+title: "Country Analysis"
+---
+
+This page explores changes in life expectancy, GDP per capita, and population over time for a specific country.
+
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+file_path = "/Users/nicholasrichards/Desktop/QTM_350/github/qtm350-quiz02/gapminder.csv"
+df_gapminder = pd.read_csv(file_path)
+
+
+country = "United States"
+country_data = df_gapminder[df_gapminder["country"] == country]
+
+plt.figure(figsize=(10,6))
+plt.plot(country_data["year"], country_data["life_expectancy"], label="Life Expectancy")
+plt.plot(country_data["year"], country_data["gdp_per_capita"] / 1000, label="GDP per Capita (scaled)")
+plt.plot(country_data["year"], country_data["population_millions"] / 1e7, label="Population (scaled)")
+plt.xlabel("Year")
+plt.ylabel("Value (scaled)")
+plt.title(f"{country} Over Time")
+plt.legend()
+plt.show()
+```
